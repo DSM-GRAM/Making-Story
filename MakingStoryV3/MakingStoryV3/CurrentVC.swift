@@ -12,21 +12,35 @@ class CurrentVC: UITableViewController {
     
     var tableList = [String]()
     var toAppend = ""
+    var checking = ""
     
     override func viewWillAppear(_ animated: Bool) {
         let ud = UserDefaults.standard
+        let userDefault = UserDefaults.standard
         
         if let story = ud.string(forKey: "story") {
-            print(story)
             toAppend = story
         }
-        print("됨")
-        tableList.append(toAppend)
-        self.tableView.reloadData()
+        
+        if let check = userDefault.string(forKey: "check") {
+            checking = check
+        }
+        
+        switch checking {
+        case "0":
+            print("unwind")
+        default:
+            tableList.append(toAppend)
+            self.tableView.reloadData()
+
+        }
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableList.removeAll()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -61,17 +75,27 @@ class CurrentVC: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let alertController = UIAlertController(title: "정말 삭제하시겠습니까?", message: "삭제 취소할 수 없습니다", preferredStyle: UIAlertController.Style.alert)
+            
+            let registerAction = UIAlertAction(title: "삭제", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
+                self.tableList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.default)
+            
+            alertController.addAction(registerAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -81,9 +105,9 @@ class CurrentVC: UITableViewController {
     */
 
     /*
-    // Override to support conditional rearranging of the table view.
+     Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
+         Return false if you do not want the item to be re-orderable.
         return true
     }
     */

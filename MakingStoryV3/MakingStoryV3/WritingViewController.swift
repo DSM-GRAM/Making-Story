@@ -13,7 +13,7 @@ class WritingViewController: UIViewController {
     @IBOutlet weak var txtGivenWord: UILabel!
     @IBOutlet weak var txtRegister: UITextView!
     
-    var toGiveWord = ["사람","등","그러나","씨","또","일","사회","많다","안","좋다","더","받다","그것","집","문제","그녀","자신","문화","생각","소리","여자","개","뒤","좀","함께","아이","시간","너","인간","사실","어머니","눈","점","시대","다음","누구","여러","하나","세계","위","운동","퍼센트","학교","자기","가장","대통령","가지","바로","그래서","무엇","정부","돈","국가","모두","여성","친구","마음"]
+    var toGiveWord = ["사람","등","그러나","사회","많다","좋다","받다","그것","집","문제","그녀","자신","문화","생각","소리","여자","개","뒤","함께","아이","시간","인간","사실","어머니","눈","점","시대","다음","누구","여러","하나","세계","위","운동","퍼센트","학교","자기","가장","대통령","가지","바로","그래서","무엇","정부","돈","국가","모두","여성","친구","마음","남성","어른","사랑","학교","남자","창문","하늘","비","크기","고기","서양","냄새","공연","남녀","속도","준비","소년","소식","작용","허리","공업","노인","새","영어","출신","결정","경향","기록","움직임","이미지","특성","교장","업무","입시","청소년","사장","선배","업체","국회","걱정","행사","누나","근처"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,9 @@ class WritingViewController: UIViewController {
     }
     
     @IBAction func btnUnwind(_ sender: Any) {
+        let userDefault = UserDefaults.standard
+        userDefault.set("0", forKey: "check")
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -64,7 +67,9 @@ class WritingViewController: UIViewController {
                     
                     let registerAction = UIAlertAction(title: "등록", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
                         let ud = UserDefaults.standard
+                        let userDefault = UserDefaults.standard
                         ud.set(self.txtRegister.text, forKey: "story")
+                        userDefault.set("1", forKey: "check")
                         self.presentingViewController?.dismiss(animated:true)
                         self.dismiss(animated: true, completion: nil)
                     }
