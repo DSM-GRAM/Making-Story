@@ -55,21 +55,9 @@ class WritingViewController: UIViewController {
         let checkText = txtGivenWord.text!
         if txtGivenWord.text != "단어" {
             if txtRegister.text.count < 50 {
-                let alertController = UIAlertController(title: "너무 짧습니다", message: "50글자 이상 입력해주세요", preferredStyle: UIAlertController.Style.alert)
-                
-                let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
-                
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                makeAlert(titl: "너무 짧습니다", mess: "50글자 이상 입력해주세요", first: "확인")
             } else if txtRegister.text.count > 150 {
-                let alertController = UIAlertController(title: "너무 깁니다", message: "150글자 이하 입력해주세요", preferredStyle: UIAlertController.Style.alert)
-                
-                let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
-                
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                makeAlert(titl: "너무 깁니다", mess: "150글자 이하 입력해주세요", first: "확인")
             } else {
                 if (txtRegister.text?.contains(checkText))! {
                     let alertController = UIAlertController(title: "등록하시겠습니까?", message: "등록하면 취소할 수 없습니다", preferredStyle: UIAlertController.Style.alert)
@@ -87,26 +75,24 @@ class WritingViewController: UIViewController {
                     
                     self.present(alertController, animated: true, completion: nil)
                 } else {
-                    let alertController = UIAlertController(title: "다시 확인하세요", message: "선택한 단어를 포함하지 않았습니다", preferredStyle: UIAlertController.Style.alert)
-                    
-                    let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
-                    
-                    alertController.addAction(okAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
+                    makeAlert(titl: "다시 확인하세요", mess: "선택한 단어를 포함하지 않았습니다", first: "확인")
                 }
             }
-
+            
         } else {
-            let alertController = UIAlertController(title: "다시 확인하세요", message: "단어를 선택하지 않았습니다", preferredStyle: UIAlertController.Style.alert)
-            
-            let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default)
-            
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
+            makeAlert(titl: "다시 확인하세요", mess: "단어를 선택하지 않았습니다", first: "확인")
         }
         
     }
-
+    
+    func makeAlert(titl: String, mess: String, first: String) {
+        let alertController = UIAlertController(title: "\(titl)", message: "\(mess)", preferredStyle: UIAlertController.Style.alert)
+        
+        let okAction = UIAlertAction(title: "\(first)", style: UIAlertAction.Style.default)
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
