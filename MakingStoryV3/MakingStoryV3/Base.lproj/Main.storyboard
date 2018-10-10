@@ -121,14 +121,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-LE-4UH">
-                                <rect key="frame" x="165" y="75" width="44" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="pngBtnAlert"/>
-                                <connections>
-                                    <action selector="btnChooseWord:" destination="s4B-mj-1Bm" eventType="touchUpInside" id="wPe-8g-Qpv"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="내 소설 작성하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rL-C1-jwt">
                                 <rect key="frame" x="131" y="38" width="112" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -137,17 +129,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="단어" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etT-9Z-PvK">
-                                <rect key="frame" x="165" y="75" width="44" height="14"/>
+                                <rect key="frame" x="170" y="75" width="35" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.39598488809999999" green="0.54470962290000002" blue="0.72943502660000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-LE-4UH">
+                                <rect key="frame" x="150" y="54" width="75" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="wordUnpicked2"/>
+                                <connections>
+                                    <action selector="btnChooseWord:" destination="s4B-mj-1Bm" eventType="touchUpInside" id="wPe-8g-Qpv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="s37-gY-wWM"/>
                     </view>
                     <connections>
+                        <outlet property="btnWordPick" destination="7Aa-LE-4UH" id="bwd-PE-OMU"/>
                         <outlet property="txtGivenWord" destination="etT-9Z-PvK" id="5Hm-ZC-LZ1"/>
                         <outlet property="txtRegister" destination="8hz-sU-k3v" id="C58-nr-5xt"/>
                     </connections>
@@ -158,7 +159,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pngBtnAlert" width="44" height="16"/>
         <image name="pngTable" width="343" height="145"/>
+        <image name="wordUnpicked2" width="453.60000610351562" height="340.07998657226562"/>
     </resources>
 </document>
