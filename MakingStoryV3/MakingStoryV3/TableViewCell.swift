@@ -12,5 +12,4 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblStory: UILabel!
     
-
 }
